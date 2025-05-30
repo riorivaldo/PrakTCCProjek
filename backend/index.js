@@ -1,5 +1,4 @@
 import dotenv from "dotenv";
-dotenv.config();
 
 import express from "express";
 import cors from "cors";
@@ -8,6 +7,8 @@ import AuthRoute from "./routes/authRoutes.js";
 import TransactionRoute from "./routes/transactionRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import goalRoutes from "./routes/goalRoutes.js";
+
+dotenv.config();
 
 // Cek environment variable JWT_SECRET saat server start
 if (!process.env.JWT_SECRET) {
