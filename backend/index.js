@@ -4,7 +4,6 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 
-import NoteRoute from "./routes/diaryRoutes.js";
 import AuthRoute from "./routes/authRoutes.js";
 import TransactionRoute from "./routes/transactionRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
@@ -24,7 +23,7 @@ app.use("/auth", AuthRoute);
 app.use("/categories", categoryRoutes);
 app.use("/transactions", TransactionRoute);
 app.use("/goals", goalRoutes);
-app.use("/notes", NoteRoute);
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
