@@ -1,0 +1,57 @@
+.kategori-item {
+  position: relative;
+  padding: 20px 12px; /* tambah padding atas bawah agar lebih lega */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center; /* supaya teks center horizontal */
+  min-height: 70px; /* agar card cukup tinggi */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+/* agar teks benar-benar di tengah secara vertikal dan horizontal */
+.kategori-item strong {
+  font-size: 16px;
+  color: #222;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* container tombol ikon diposisikan absolute di kanan bawah */
+.kategori-item .actions {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  display: flex;
+  gap: 8px;
+}
+
+/* tombol ikon */
+.icon-btn {
+  color: #808080; /* abu-abu medium */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+  border-radius: 4px;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.icon-btn:hover {
+  color: #555555; /* abu-abu gelap saat hover */
+  background-color: #eee;
+}
+
+.icon-btn.delete:hover {
+  color: red;
+  background-color: #fee;
+}

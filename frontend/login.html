@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login User</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome (opsional untuk ikon mata) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="bg-teal-50 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-sm text-center">
+        <img src="./assets/logo.jpeg" alt="Logo KeuanganKu" class="w-60 mx-auto mb-6" />
+        <h2 class="text-2xl font-bold text-teal-700 mb-6">Login</h2>
+
+        <input type="email" id="email" placeholder="Email" required
+            class="w-full px-4 py-3 mb-4 border border-teal-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-400" />
+
+        <div class="relative mb-4">
+            <input type="password" id="password"
+                class="w-full px-4 py-3 pr-12 border border-teal-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+                placeholder="Password" required />
+
+            <button type="button" onclick="togglePasswordVisibility()"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-teal-600 text-lg focus:outline-none">
+                <i id="eye-icon" class="fa fa-eye"></i> <!-- Hanya satu ikon di sini -->
+            </button>
+        </div>
+
+
+        <button onclick="login()"
+            class="w-full bg-gradient-to-r from-teal-400 to-teal-700 text-white font-semibold py-3 rounded-lg shadow-md hover:from-teal-700 hover:to-teal-500 transition-all mb-3">
+            Login
+        </button>
+
+        <button onclick="window.location.href='register.html'"
+            class="text-sm text-teal-700 underline font-medium hover:text-teal-900 transition-all">
+            Belum punya akun? Daftar
+        </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const BASE_URL = "http://localhost:5000";
+
+        function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        async function login() {
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (!email || !password) {
+                alert("Email dan password wajib diisi!");
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                alert("Masukkan email yang valid!");
+                return;
+            }
+
+            if (password.length < 6) {
+                alert("Password minimal 6 karakter!");
+                return;
+            }
+
+            try {
+                const res = await axios.post(`${BASE_URL}/auth/login`, { email, password });
+                const { token, user } = res.data;
+
+                localStorage.setItem("token", token);
+                localStorage.setItem("user_id", user.id);
+
+                alert("Login berhasil!");
+                window.location.href = "transaksi.html";
+            } catch (err) {
+                alert("Login gagal: " + (err.response?.data?.message || err.message));
+            }
+        }
+
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById("password");
+            const icon = document.getElementById("eye-icon");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
+    </script>
+</body>
+
+</html>

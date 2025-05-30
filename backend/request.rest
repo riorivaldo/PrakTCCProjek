@@ -1,0 +1,161 @@
+### Register User
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+  "name": "cobalahhh",
+  "email": "cobalahhh@example.com",
+  "password": "123456"
+}
+
+###
+
+### Login User
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+  "email": "cobalah@example.com",
+  "password": "123456"
+}
+
+###
+
+# Simpan token dari response login ke variable ENV bernama {{token}}
+# Contoh cara pakai di REST Client VSCode:
+# Setelah login berhasil, copy token dari response lalu replace di bawah ini.
+
+### Get All Categories (Requires JWT)
+GET http://localhost:5000/categories
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+
+###
+
+### Create New Category (Requires JWT)
+POST http://localhost:5000/categories
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+
+{
+  "name": "Makanan"
+}
+
+###
+
+### Get Transactions for User (Requires JWT)
+GET http://localhost:5000/transactions/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+
+###
+
+### Create Transaction (Requires JWT)
+POST http://localhost:5000/transactions
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+
+{
+  "user_id": 1,
+  "tanggal": "2025-05-25",
+  "type": "income",
+  "amount": 1500000,
+  "description": "Gaji Bulanan",
+  "category_id": 1
+}
+
+###
+
+### Update Transaction (Requires JWT)
+PUT http://localhost:5000/transactions/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+
+{
+  "tanggal": "2025-05-26",
+  "type": "expense",
+  "amount": 500000,
+  "description": "Belanja Bulanan"
+}
+
+###
+
+### Delete Transaction (Requires JWT)
+DELETE http://localhost:5000/transactions/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+
+###
+
+### Get Goals for User (Requires JWT)
+GET http://localhost:5000/goals/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+
+###
+
+### Create Goal (Requires JWT)
+POST http://localhost:5000/goals
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+
+{
+  "user_id": 1,
+  "name": "Liburan",
+  "target_amount": 5000000,
+  "current_amount": 1000000,
+  "due_date": "2025-12-31"
+}
+
+###
+
+### Update Goal (Requires JWT)
+PUT http://localhost:5000/goals/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+
+{
+  "name": "Liburan ke Bali",
+  "target_amount": 6000000,
+  "current_amount": 2000000,
+  "due_date": "2026-01-31"
+}
+
+###
+
+### Delete Goal (Requires JWT)
+DELETE http://localhost:5000/goals/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+
+###
+
+### Get Notes (Requires JWT)
+GET http://localhost:5000/notes/note
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+
+###
+
+### Create Note (Requires JWT)
+POST http://localhost:5000/notes/add-note
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+
+{
+  "tanggal": "2025-05-25",
+  "isi": "Catatan keuangan hari ini"
+}
+
+###
+
+### Update Note (Requires JWT)
+PUT http://localhost:5000/notes/edit-note/15
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+
+{
+  "tanggal": "2025-05-26",
+  "isi": "Catatan keuangan yang diperbarui"
+}
+
+###
+
+### Delete Note (Requires JWT)
+DELETE http://localhost:5000/notes/delete-note/15
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+

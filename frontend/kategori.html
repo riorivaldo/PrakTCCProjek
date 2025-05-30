@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manajemen Kategori</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-gray-800 text-white p-4 flex flex-col min-h-screen">
+    <div class="flex flex-col items-center mb-6">
+      <img src="./assets/logo.jpeg" alt="Logo KeuanganKu" class="" />
+      <h2 class="text-lg font-bold"></h2>
+    </div>
+    <nav class="flex-grow">
+      <ul class="space-y-2">
+        <li><a href="transaksi.html" class="block py-2 px-3 rounded hover:bg-gray-700">Transaksi</a></li>
+        <li><a href="kategori.html" class="block py-2 px-3 rounded bg-blue-600">Kelola Kategori</a></li>
+        <li><a href="goals.html" class="block py-2 px-3 rounded hover:bg-gray-700">Kelola Goal</a></li>
+      </ul>
+    </nav>
+    <button id="logout-btn" class="mt-4 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded">Logout</button>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-6">
+    <h1 class="text-2xl font-bold mb-6">Kelola Kategori</h1>
+
+    <!-- Form -->
+    <form id="form-kategori" class="bg-white shadow p-6 rounded mb-6 max-w-md">
+      <label for="nama-kategori" class="block font-medium mb-1">Nama Kategori</label>
+      <input type="text" id="nama-kategori" placeholder="Nama Kategori" required
+        class="w-full border rounded px-3 py-2 mb-4" />
+      <input type="hidden" id="kategori-id" />
+      <button type="submit" id="submit-btn"
+        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Simpan</button>
+    </form>
+
+    <!-- Daftar Kategori -->
+    <h2 class="text-xl font-semibold mb-4">Daftar Kategori</h2>
+    <div id="daftar-kategori" class="grid md:grid-cols-2 gap-4"></div>
+  </main>
+
+  <!-- Script -->
+  <script>
+    const BASE_URL = "http://localhost:5000";
+    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("user_id");
+
+    if (!token || !userId) {
+      alert("Silakan login terlebih dahulu.");
+      window.location.href = "login.html";
+    }
+
+    const form = document.getElementById("form-kategori");
+    const inputNama = document.getElementById("nama-kategori");
+    const inputId = document.getElementById("kategori-id");
+    const daftarKategori = document.getElementById("daftar-kategori");
+    const submitBtn = document.getElementById("submit-btn");
+
+    function logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user_id");
+      window.location.href = "login.html";
+    }
+
+    const logoutBtn = document.getElementById("logout-btn");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", logout);
+    }
+
+    async function fetchKategori() {
+      try {
+        const res = await axios.get(`${BASE_URL}/categories`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        daftarKategori.innerHTML = "";
+        res.data.forEach((kat) => {
+          const div = document.createElement("div");
+          div.className = "bg-white shadow rounded p-4 flex justify-between items-center";
+
+          div.innerHTML = `
+            <strong>${kat.name}</strong>
+            <div class="flex gap-2 text-lg">
+              <button class="text-blue-500 hover:text-blue-700" title="Edit" onclick="editKategori(${kat.id}, '${kat.name}')">
+                <i class="fa fa-pencil"></i>
+              </button>
+              <button class="text-red-500 hover:text-red-700" title="Hapus" onclick="hapusKategori(${kat.id})">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          `;
+          daftarKategori.appendChild(div);
+        });
+      } catch (err) {
+        console.error("Gagal memuat kategori:", err);
+      }
+    }
+
+    window.editKategori = function (id, nama) {
+      inputId.value = id;
+      inputNama.value = nama;
+      submitBtn.textContent = "Update";
+    };
+
+    window.hapusKategori = async function (id) {
+      if (confirm("Yakin ingin menghapus kategori ini?")) {
+        try {
+          await axios.delete(`${BASE_URL}/categories/${id}`, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+          fetchKategori();
+        } catch (err) {
+          console.error("Gagal menghapus kategori:", err);
+        }
+      }
+    };
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const id = inputId.value;
+      const nama = inputNama.value.trim();
+      if (!nama) return alert("Nama kategori tidak boleh kosong.");
+
+      try {
+        if (id) {
+          await axios.put(`${BASE_URL}/categories/${id}`, { name: nama }, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+        } else {
+          await axios.post(`${BASE_URL}/categories`, { name: nama }, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+        }
+        form.reset();
+        inputId.value = "";
+        submitBtn.textContent = "Simpan";
+        fetchKategori();
+      } catch (err) {
+        console.error("Gagal menyimpan kategori:", err);
+        alert("Gagal menyimpan kategori. Silakan coba lagi.");
+      }
+    });
+
+    fetchKategori();
+  </script>
+</body>
+
+</html>

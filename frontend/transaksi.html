@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manajemen Keuangan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-gray-800 text-white p-4 flex flex-col">
+    <div class="flex flex-col items-center mb-6">
+      <img src="./assets/logo.jpeg" alt="Logo KeuanganKu" class="" />
+      <h2 class="text-lg font-bold"></h2>
+    </div>
+    <nav class="flex-grow">
+      <ul class="space-y-2">
+        <li><a href="transaksi.html" class="block py-2 px-3 rounded bg-blue-600 hover:bg-blue-700">Transaksi</a></li>
+        <li><a href="kategori.html" class="block py-2 px-3 rounded hover:bg-gray-700">Kelola Kategori</a></li>
+        <li><a href="goals.html" class="block py-2 px-3 rounded hover:bg-gray-700">Kelola Goal</a></li>
+      </ul>
+    </nav>
+    <button onclick="logout()" class="mt-4 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded">Logout</button>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-6">
+    <h1 class="text-2xl font-bold mb-6">Manajemen Transaksi</h1>
+
+    <!-- Form Transaksi -->
+    <form id="form-transaksi" class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white p-6 rounded shadow mb-6">
+      <div>
+        <label for="tanggal" class="block font-medium mb-1">Tanggal</label>
+        <input type="date" id="tanggal" required class="w-full border rounded px-3 py-2" />
+      </div>
+      <div>
+        <label for="type" class="block font-medium mb-1">Tipe</label>
+        <select id="type" class="w-full border rounded px-3 py-2">
+          <option value="income">Pemasukan</option>
+          <option value="expense">Pengeluaran</option>
+        </select>
+      </div>
+      <div>
+        <label for="amount" class="block font-medium mb-1">Jumlah</label>
+        <input type="number" id="amount" placeholder="Jumlah" required class="w-full border rounded px-3 py-2" />
+      </div>
+      <div>
+        <label for="description" class="block font-medium mb-1">Keterangan</label>
+        <input type="text" id="description" placeholder="Keterangan" class="w-full border rounded px-3 py-2" />
+      </div>
+      <div class="md:col-span-2">
+        <label for="category_id" class="block font-medium mb-1">Kategori</label>
+        <select id="category_id" required class="w-full border rounded px-3 py-2">
+          <option value="">Pilih Kategori</option>
+        </select>
+      </div>
+      <div class="md:col-span-2">
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">Simpan</button>
+      </div>
+    </form>
+
+    <!-- Daftar Transaksi -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Daftar Transaksi</h2>
+      <div id="transaction-list" class="grid md:grid-cols-2 gap-4">
+        <div class="bg-white rounded shadow p-4">
+          <h3 class="text-lg font-bold mb-2">Pengeluaran</h3>
+          <div id="list-expense"></div>
+        </div>
+        <div class="bg-white rounded shadow p-4">
+          <h3 class="text-lg font-bold mb-2">Pemasukan</h3>
+          <div id="list-income"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ringkasan Saldo -->
+    <section class="mt-8">
+      <h3 class="text-xl font-semibold mb-4">Ringkasan Saldo</h3>
+      <div id="ringkasan-saldo" class="grid md:grid-cols-3 gap-4">
+        <div class="bg-green-500 text-white text-center p-4 rounded shadow">
+          <h4 class="font-bold">Pemasukan</h4>
+          <p id="total-income" class="text-lg">Rp0</p>
+        </div>
+        <div class="bg-red-500 text-white text-center p-4 rounded shadow">
+          <h4 class="font-bold">Pengeluaran</h4>
+          <p id="total-expense" class="text-lg">Rp0</p>
+        </div>
+        <div class="bg-blue-500 text-white text-center p-4 rounded shadow">
+          <h4 class="font-bold">Saldo Akhir</h4>
+          <p id="saldo-akhir" class="text-lg">Rp0</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Script -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="script-transaksi.js" defer></script>
+  <script>
+    function logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user_id");
+      window.location.href = "login.html";
+    }
+  </script>
+
+</body>
+
+</html>

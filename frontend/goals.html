@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Target Keuangan</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- Font Awesome (optional for icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="bg-gray-100 min-h-screen flex">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-gray-800 text-white p-4 flex flex-col min-h-screen">
+    <div class="flex flex-col items-center mb-6">
+      <img src="./assets/logo.jpeg" alt="Logo KeuanganKu" class="" />
+      <h2 class="text-lg font-bold"></h2>
+    </div>
+    <nav class="flex-grow">
+      <ul class="space-y-2">
+        <li><a href="transaksi.html" class="block py-2 px-3 rounded hover:bg-gray-700">Transaksi</a></li>
+        <li><a href="kategori.html" class="block py-2 px-3 rounded hover:bg-gray-700">Kelola Kategori</a></li>
+        <li><a href="goals.html" class="block py-2 px-3 rounded bg-blue-600">Kelola Goal</a></li>
+      </ul>
+    </nav>
+    <button id="logout-btn" class="mt-4 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded">Logout</button>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-6">
+    <h1 class="text-2xl font-bold mb-6">Target Keuangan</h1>
+
+    <!-- Form -->
+    <form id="form-goal" class="bg-white shadow p-6 rounded mb-6 max-w-xl">
+      <div class="mb-4">
+        <label for="name" class="block font-medium mb-1">Nama Tujuan</label>
+        <input type="text" id="name" placeholder="Nama Tujuan" required class="w-full border rounded px-3 py-2" />
+      </div>
+
+      <div class="mb-4">
+        <label for="target_amount" class="block font-medium mb-1">Target (Rp)</label>
+        <input type="number" id="target_amount" placeholder="Target (Rp)" required
+          class="w-full border rounded px-3 py-2" />
+      </div>
+
+      <div class="mb-4">
+        <label for="current_amount" class="block font-medium mb-1">Terkumpul (Rp)</label>
+        <input type="number" id="current_amount" placeholder="Terkumpul (Rp)" required
+          class="w-full border rounded px-3 py-2" />
+      </div>
+
+      <div class="mb-4">
+        <label for="due_date" class="block font-medium mb-1">Tanggal Target</label>
+        <input type="date" id="due_date" required class="w-full border rounded px-3 py-2" />
+      </div>
+
+      <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Simpan</button>
+    </form>
+
+    <!-- Daftar Target -->
+    <h2 class="text-xl font-semibold mb-4">Daftar Target</h2>
+    <div id="goal-list" class="grid md:grid-cols-2 gap-4"></div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="utils.js"></script>
+  <script src="script-goals.js" defer></script>
+  <script>
+    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("user_id");
+
+    if (!token || !userId) {
+      alert("Silakan login terlebih dahulu.");
+      window.location.href = "login.html";
+    }
+
+    function logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user_id");
+      window.location.href = "login.html";
+    }
+
+    const logoutBtn = document.getElementById("logout-btn");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", logout);
+    }
+  </script>
+</body>
+
+</html>
