@@ -3,8 +3,8 @@ POST http://localhost:5000/auth/register
 Content-Type: application/json
 
 {
-  "name": "cobalahhhk",
-  "email": "cobalahhhk@example.com",
+  "name": "cobalahhhkas",
+  "email": "cobalahhhkas@example.com",
   "password": "123456"
 }
 
@@ -15,7 +15,7 @@ POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
-  "email": "cobalah@example.com",
+  "email": "cobalahhhkas@example.com",
   "password": "123456"
 }
 
