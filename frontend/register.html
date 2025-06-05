@@ -75,7 +75,7 @@
       }
 
       try {
-        await axios.post(`${BASE_URL}/auth/register`, { name, email, password });
+        await axios.post(`https://note-be056-371739253078.us-central1.run.app/auth/register`, { name, email, password });
         alert("Registrasi berhasil! Silakan login.");
         window.location.href = "login.html";
       } catch (err) {
