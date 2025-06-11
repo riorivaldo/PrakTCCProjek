@@ -3,8 +3,8 @@ POST http://localhost:5000/auth/register
 Content-Type: application/json
 
 {
-  "name": "cobalahhhkas",
-  "email": "cobalahhhkas@example.com",
+  "name": "cobaajaya",
+  "email": "cobaajaya@example.com",
   "password": "123456"
 }
 
@@ -15,7 +15,7 @@ POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
-  "email": "cobalahhhkas@example.com",
+  "email": "cobaajaya@example.com",
   "password": "123456"
 }
 
@@ -27,14 +27,14 @@ Content-Type: application/json
 
 ### Get All Categories (Requires JWT)
 GET http://localhost:5000/categories
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoiY29iYWFqYXlhQGV4YW1wbGUuY29tIiwibmFtZSI6ImNvYmFhamF5YSIsImlhdCI6MTc0OTA4ODkwMCwiZXhwIjoxNzQ5MTc1MzAwfQ.XdWZZpf6DzbVGXgI83zuBf0Is0NWOCmdWaZ4sL8IaFU
 
 ###
 
 ### Create New Category (Requires JWT)
 POST http://localhost:5000/categories
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoiY29iYWFqYXlhQGV4YW1wbGUuY29tIiwibmFtZSI6ImNvYmFhamF5YSIsImlhdCI6MTc0OTA4ODkwMCwiZXhwIjoxNzQ5MTc1MzAwfQ.XdWZZpf6DzbVGXgI83zuBf0Is0NWOCmdWaZ4sL8IaFU
 
 {
   "name": "Makanan"
@@ -43,15 +43,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsI
 ###
 
 ### Get Transactions for User (Requires JWT)
-GET http://localhost:5000/transactions/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+GET http://localhost:5000/transactions/12
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoiY29iYWFqYXlhQGV4YW1wbGUuY29tIiwibmFtZSI6ImNvYmFhamF5YSIsImlhdCI6MTc0OTA4ODkwMCwiZXhwIjoxNzQ5MTc1MzAwfQ.XdWZZpf6DzbVGXgI83zuBf0Is0NWOCmdWaZ4sL8IaFU
 
 ###
 
 ### Create Transaction (Requires JWT)
 POST http://localhost:5000/transactions
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoiY29iYWFqYXlhQGV4YW1wbGUuY29tIiwibmFtZSI6ImNvYmFhamF5YSIsImlhdCI6MTc0OTA4ODkwMCwiZXhwIjoxNzQ5MTc1MzAwfQ.XdWZZpf6DzbVGXgI83zuBf0Is0NWOCmdWaZ4sL8IaFU
 
 {
   "user_id": 1,
@@ -65,9 +65,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsI
 ###
 
 ### Update Transaction (Requires JWT)
-PUT http://localhost:5000/transactions/1
+PUT http://localhost:5000/transactions/12
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoiY29iYWFqYXlhQGV4YW1wbGUuY29tIiwibmFtZSI6ImNvYmFhamF5YSIsImlhdCI6MTc0OTA4ODkwMCwiZXhwIjoxNzQ5MTc1MzAwfQ.XdWZZpf6DzbVGXgI83zuBf0Is0NWOCmdWaZ4sL8IaFU
 
 {
   "tanggal": "2025-05-26",
@@ -79,22 +79,21 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsI
 ###
 
 ### Delete Transaction (Requires JWT)
-DELETE http://localhost:5000/transactions/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+DELETE http://localhost:5000/transactions/12
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoiY29iYWFqYXlhQGV4YW1wbGUuY29tIiwibmFtZSI6ImNvYmFhamF5YSIsImlhdCI6MTc0OTA4ODkwMCwiZXhwIjoxNzQ5MTc1MzAwfQ.XdWZZpf6DzbVGXgI83zuBf0Is0NWOCmdWaZ4sL8IaFU
 
 ###
 
 ### Get Goals for User (Requires JWT)
-GET http://localhost:5000/goals/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+GET http://localhost:5000/goals/12
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoiY29iYWFqYXlhQGV4YW1wbGUuY29tIiwibmFtZSI6ImNvYmFhamF5YSIsImlhdCI6MTc0OTA4ODkwMCwiZXhwIjoxNzQ5MTc1MzAwfQ.XdWZZpf6DzbVGXgI83zuBf0Is0NWOCmdWaZ4sL8IaFU
 
 ###
 
 ### Create Goal (Requires JWT)
 POST http://localhost:5000/goals
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoiY29iYWFqYXlhQGV4YW1wbGUuY29tIiwibmFtZSI6ImNvYmFhamF5YSIsImlhdCI6MTc0OTA4ODkwMCwiZXhwIjoxNzQ5MTc1MzAwfQ.XdWZZpf6DzbVGXgI83zuBf0Is0NWOCmdWaZ4sL8IaFU
 {
   "user_id": 1,
   "name": "Liburan",
@@ -106,9 +105,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsI
 ###
 
 ### Update Goal (Requires JWT)
-PUT http://localhost:5000/goals/1
+PUT http://localhost:5000/goals/12
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoiY29iYWFqYXlhQGV4YW1wbGUuY29tIiwibmFtZSI6ImNvYmFhamF5YSIsImlhdCI6MTc0OTA4ODkwMCwiZXhwIjoxNzQ5MTc1MzAwfQ.XdWZZpf6DzbVGXgI83zuBf0Is0NWOCmdWaZ4sL8IaFU
 
 {
   "name": "Liburan ke Bali",
@@ -120,22 +119,20 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsI
 ###
 
 ### Delete Goal (Requires JWT)
-DELETE http://localhost:5000/goals/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
-
+DELETE http://localhost:5000/goals/12
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoiY29iYWFqYXlhQGV4YW1wbGUuY29tIiwibmFtZSI6ImNvYmFhamF5YSIsImlhdCI6MTc0OTA4ODkwMCwiZXhwIjoxNzQ5MTc1MzAwfQ.XdWZZpf6DzbVGXgI83zuBf0Is0NWOCmdWaZ4sL8IaFU
 ###
 
 ### Get Notes (Requires JWT)
 GET http://localhost:5000/notes/note
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoiY29iYWFqYXlhQGV4YW1wbGUuY29tIiwibmFtZSI6ImNvYmFhamF5YSIsImlhdCI6MTc0OTA4ODkwMCwiZXhwIjoxNzQ5MTc1MzAwfQ.XdWZZpf6DzbVGXgI83zuBf0Is0NWOCmdWaZ4sL8IaFU
 
 ###
 
 ### Create Note (Requires JWT)
 POST http://localhost:5000/notes/add-note
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoiY29iYWFqYXlhQGV4YW1wbGUuY29tIiwibmFtZSI6ImNvYmFhamF5YSIsImlhdCI6MTc0OTA4ODkwMCwiZXhwIjoxNzQ5MTc1MzAwfQ.XdWZZpf6DzbVGXgI83zuBf0Is0NWOCmdWaZ4sL8IaFU
 {
   "tanggal": "2025-05-25",
   "isi": "Catatan keuangan hari ini"
@@ -146,7 +143,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsI
 ### Update Note (Requires JWT)
 PUT http://localhost:5000/notes/edit-note/15
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoiY29iYWFqYXlhQGV4YW1wbGUuY29tIiwibmFtZSI6ImNvYmFhamF5YSIsImlhdCI6MTc0OTA4ODkwMCwiZXhwIjoxNzQ5MTc1MzAwfQ.XdWZZpf6DzbVGXgI83zuBf0Is0NWOCmdWaZ4sL8IaFU
 
 {
   "tanggal": "2025-05-26",
@@ -157,5 +154,4 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsI
 
 ### Delete Note (Requires JWT)
 DELETE http://localhost:5000/notes/delete-note/15
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsImVtYWlsIjoiY29iYWxhaEBleGFtcGxlLmNvbSIsIm5hbWUiOiJjb2JhbGFoIiwiaWF0IjoxNzQ4MTg1NjQ5LCJleHAiOjE3NDgyNzIwNDl9.9TcV1yg7lXZso-3c7m7Y9QqwXLXuRVSQDh7q2Lq9X3E
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoiY29iYWFqYXlhQGV4YW1wbGUuY29tIiwibmFtZSI6ImNvYmFhamF5YSIsImlhdCI6MTc0OTA4ODkwMCwiZXhwIjoxNzQ5MTc1MzAwfQ.XdWZZpf6DzbVGXgI83zuBf0Is0NWOCmdWaZ4sL8IaFU
